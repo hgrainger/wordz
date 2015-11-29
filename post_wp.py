@@ -36,15 +36,16 @@ def clean_title(toclean):
 
 
 def clean_text(toclean):
-    m = re.findall("'(.*?)\'", str(toclean))
+    m = re.findall('"(.*?)\"', str(toclean))
     topass = ''.join([item.rstrip('\n') for item in m])
     return formater(topass)
 
 
 def formater(place):
-    image = "<center><a href='http://google.com/logo.png'>link</a></center>"
-    places = re.sub("(\.)", nth_matcher(7, ". \n\n" + image + "\n\n"), place)
+    places = re.sub("(\.)", nth_matcher(7, ". \n\n"), place)
     return places
+    #places = re.sub("(\.)", nth_matcher(7, ". \n\n" + image + "\n\n"), place)
+    #image = "<center><a href='http://google.com/logo.png'>link</a></center>"
 
 
 def nth_matcher(n, replacement):
